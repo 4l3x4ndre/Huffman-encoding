@@ -74,16 +74,6 @@ def item_minimal_dans_dict(dict_de_lettres):
     return lettre, poids
 
 
-def item_maximal_dans_dict(dict_de_lettres):
-    lettre = ''
-    poids = 0
-    for _lettre, apparition in dict_de_lettres.items():
-        if apparition < poids:
-            poids = apparition
-            lettre = _lettre
-    return lettre
-
-
 def supprime_et_retourne_minimal_tab_arbre(tab_arbre):
     if len(tab_arbre) == 0:
         return None

@@ -80,7 +80,7 @@ def supprime_et_retourne_minimal_tab_arbre(tab_arbre):
         return None
 
     arbre = tab_arbre.pop()
-    index_arbre = len(tab_arbre)-1
+    index_arbre = len(tab_arbre)
     tab_arbre.append(arbre)
     for i in range(len(tab_arbre)):
         a = tab_arbre[i]
@@ -107,40 +107,24 @@ def creation_tableau_arbres(dict_de_lettres):
 def creation_arbre_huffman(tab_arbre):
     arbre = None
 
-    # smaller1 = tab_arbre.pop(0)
-    # smaller2 = tab_arbre.pop(0)
-    # arbre = Arbre(smaller2, smaller1)
+    # arbre initial
+    smaller1 = tab_arbre.pop(0)
+    smaller2 = tab_arbre.pop(0)
+    arbre = Arbre(smaller2, smaller1)
+    tab_arbre.append(arbre)
 
-    while len(tab_arbre) >= 2:
-        if arbre is None:
-            fg = tab_arbre.pop(0)
-            fd = tab_arbre.pop(0)
-            arbre = Arbre(fg, fd)
+    while len(tab_arbre) > 2:
+        arbre1, tab_arbre = supprime_et_retourne_minimal_tab_arbre(tab_arbre)
+        arbre2, tab_arbre = supprime_et_retourne_minimal_tab_arbre(tab_arbre)
+        _arbre = Arbre(arbre2, arbre1)
+        tab_arbre.append(_arbre)
 
-            tab_arbre.append(arbre)
-        else:
-            # fg = tab_arbre.pop(0)
-            # fd = tab_arbre.pop(0)
-            print("avant")
-            for a in tab_arbre:
-                print(a)
-            fd, tab_arbre = supprime_et_retourne_minimal_tab_arbre(tab_arbre)
-            fg, tab_arbre = supprime_et_retourne_minimal_tab_arbre(tab_arbre)
-            print('arbregauche', fg)
-            print('arbredroite', fd)
-            other = Arbre(fg, fd)
-            arbre = Arbre(arbre, other)
-
-            tab_arbre.pop()
-
-            tab_arbre.append(arbre)
-        print("-----")
-        for a in tab_arbre:
-            print(a)
-    return arbre
+    fd, tab_arbre = supprime_et_retourne_minimal_tab_arbre(tab_arbre)
+    fg, tab_arbre = supprime_et_retourne_minimal_tab_arbre(tab_arbre)
+    return Arbre(fg, fd)
 
 
-def chemin(l, arbre):
+def chemin_lettre(l, arbre):
     if arbre is None:
         return -1
     # WIP
@@ -153,8 +137,8 @@ def main():
     tab_arbres = creation_tableau_arbres(apc)
 
     tab_arbres.reverse()
-    for a in tab_arbres:
-        print(a)
+    # for a in tab_arbres:
+    #     print(a)
 
     arbre = creation_arbre_huffman(tab_arbres)
     print(arbre)

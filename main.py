@@ -169,6 +169,13 @@ def decode_text(texte_encode, codes):
     return texte_decode
 
 
+def affiche_gain(texte_decode, texte_encode):
+    print("Gain:")
+    print("Sans encoder:", len(texte_decode), '* 7 (les codes ASCII utilisent 7 bits par caractère)', '=', len(texte_decode)*7, 'bits')
+    print("En encodant:", len(texte_encode), '=', len(texte_encode), 'bits')
+    print("Soit un gain de", len(texte_decode)*7-len(texte_encode), 'bits')
+
+
 def main():
     texte = 'a'*240 + 'b'*140 + 'c'*160 + 'd'*51 + 'e'*280 + 'f'*49 + 'G'*45 + 'h'*35
     texte = 'Hello world'
@@ -190,6 +197,9 @@ def main():
 
     texte_decode = decode_text(texte_encode, dict_de_codes)
     print(texte_decode)
+
+    affiche_gain(texte_decode, texte_encode)
+
 
 
 if __name__ == '__main__':

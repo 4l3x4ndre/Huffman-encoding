@@ -1,3 +1,5 @@
+import datetime
+
 def apparition_par_charactere(texte):
     """
     :param string:
@@ -135,7 +137,6 @@ def creation_arbre_huffman(tab_arbre):
 
 def chemin_lettre(l, arbre):
     if arbre is not None:
-        # WIP
         chemin = ''
         if arbre.enfant_gauche() is not None and l in arbre.enfant_gauche().donnee():
             chemin_suivant = chemin_lettre(l, arbre.enfant_gauche())
@@ -176,6 +177,12 @@ def affiche_gain(texte_decode, texte_encode):
     print("Soit un gain de", len(texte_decode)*7-len(texte_encode), 'bits')
 
 
+def creer_encoder_fichier(texte_encode):
+    file = open('texte_encode', 'w+')
+    file.write(texte_encode)
+    file.close()
+
+
 def main():
     file = open('text.txt', 'r')
     texte = file.read()
@@ -198,6 +205,8 @@ def main():
     print(texte_decode)
 
     affiche_gain(texte_decode, texte_encode)
+
+    creer_encoder_fichier(texte_encode)
 
 
 if __name__ == '__main__':

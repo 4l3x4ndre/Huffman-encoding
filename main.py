@@ -177,9 +177,8 @@ def affiche_gain(texte_decode, texte_encode):
 
 
 def main():
-    texte = 'a'*240 + 'b'*140 + 'c'*160 + 'd'*51 + 'e'*280 + 'f'*49 + 'G'*45 + 'h'*35
-    texte = 'Hello world'
-    texte = "En politique, mon cher, vous le savez comme moi, il n'y a pas d'hommes, mais des idées ; pas de sentiments, mais des intérêts ; en politique, on ne tue pas un homme : on supprime un obstacle, voilà tout. - Apprendre n'est pas savoir ; il y a les sachant et les savants : c'est la mémoire qui fait les uns, c'est le philosophie qui fait les autres.\n- Mais ne peut-on apprendre la philosophie ?\n- La philosophie ne s'apprend pas ; la philosophie est la réunion des sciences acquises au génie qui les applique : la philosophie, c'est le nuage éclatant sur lequel le Christ a posé le pied pour remonter au ciel.Je sonnai pour qu'on m'apportât de la lumière, personne ne vint ; je résolus alors de me servir moi-même. C'était d'ailleurs une habitude de philosophe qu'il allait me falloir prendre.La haine est aveugle, la colère étourdie, et celui qui se verse la vengeance risque de boire un breuvage amer.Menez deux moutons à la boucherie, deux boeufs à l'abattoir, et faites comprendre à l'un d'eux que son compagnon ne mourra pas, le mouton bêlera de joie, le boeuf mugira de plaisir ; mais l'homme, l'homme que Dieu a fait à son image, l'homme à qui Dieu a imposé pour première, pour unique, pour suprême loi, l'amour de son prochain, l'homme à qui Dieu a donné une voix pour exprimer sa pensée, quel sera son premier cri quand il apprendra que son camarade est sauvé ? Un blasphème.Je n'ai que deux adversaires ; je ne dirai pas deux vainqueurs, car avec la persistance je les soumets : c'est la distance et le temps. Le troisième, et le plus terrible, c'est ma condition d'homme mortel. Celle-là seule peut m'arrêter dans le chemin où je marche, et avant que j'aie atteint le but auquel je tends : tout le reste, je l'ai calculé.Or, l'homme ne sera parfait que lorsqu'il saura créer et détruire comme Dieu ; il sait déjà détruire, c'est la moitié du chemin de fait.Supposez que le Maître suprême, après avoir créé le monde, après avoir fertilisé le chaos, se fût arrêté au tiers de la création pour épargner à un ange les larmes que nos crimes devaient faire couler un jour de ses yeux immortels ; supposez qu'après avoir tout préparé, tout pétri, tout fécondé, au moment d'admirer son oeuvre, Dieu ait éteint le soleil et repoussé du pied le monde dans la nuit éternelle, alors vous aurez une idée, ou plutôt non, non, vous ne pourrez pas encore vous faire une idée de ce que je perds en perdant la vie en ce moment."
+    file = open('text.txt', 'r')
+    texte = file.read()
     apc = apparition_par_charactere(texte)
 
     tab_arbres = creation_tableau_arbres(apc)
@@ -199,7 +198,6 @@ def main():
     print(texte_decode)
 
     affiche_gain(texte_decode, texte_encode)
-
 
 
 if __name__ == '__main__':

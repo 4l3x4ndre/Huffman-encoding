@@ -1,8 +1,6 @@
-import datetime
-
 def apparition_par_charactere(texte):
     """
-    :param string:
+    :param texte:
     :return: dictionnaire d'apparition de chaque lettre dans le texte
     """
     _apc = {}
@@ -55,13 +53,6 @@ class Arbre:
         if self is None:
             return 'None'
         return '(' + str(self.gauche) + ',' + self.lettre + ',' + str(self.poids) + ',' + str(self.droit) + ')'
-
-
-def parcours_infixe(_a):
-    if _a is not None:
-        parcours_infixe(_a.enfant_gauche())
-        print(_a.lettre(),  _a.donne_poids())
-        parcours_infixe(_a.enfant_droit())
 
 
 def item_minimal_dans_dict(dict_de_lettres):
@@ -183,6 +174,7 @@ def main():
     tab_arbres.reverse()
 
     arbre = creation_arbre_huffman(tab_arbres)
+    print(arbre)
 
     dict_de_codes = {}
 

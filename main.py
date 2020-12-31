@@ -55,7 +55,7 @@ class Arbre:
         return '(' + str(self.gauche) + ',' + self.lettre + ',' + str(self.poids) + ',' + str(self.droit) + ')'
 
 
-def item_minimal_dans_dict(dict_de_lettres):
+def item_maximal_dans_dict(dict_de_lettres):
     lettre = ''
     poids = 0
     for _lettre, apparition in dict_de_lettres.items():
@@ -83,9 +83,10 @@ def supprime_et_retourne_minimal_tab_arbre(tab_arbre):
 
 def creation_tableau_arbres(dict_de_lettres):
     if len(dict_de_lettres) > 0:
-        l, p = item_minimal_dans_dict(dict_de_lettres)
+        # l, p = item_maximal_dans_dict(dict_de_lettres)
+        l, p = list(dict_de_lettres.items())[0]
 
-        arbre = Arbre(None, None, l, dict_de_lettres[l])
+        arbre = Arbre(None, None, l, p)
 
         dict_de_lettres.pop(l)
 
@@ -100,10 +101,10 @@ def creation_arbre_huffman(tab_arbre):
     arbre = None
 
     # arbre initial
-    smaller1 = tab_arbre.pop(0)
-    smaller2 = tab_arbre.pop(0)
-    arbre = Arbre(smaller2, smaller1)
-    tab_arbre.append(arbre)
+    # smaller1 = tab_arbre.pop(0)
+    # smaller2 = tab_arbre.pop(0)
+    # arbre = Arbre(smaller2, smaller1)
+    # tab_arbre.append(arbre)
 
     while len(tab_arbre) > 2:
         arbre1, tab_arbre = supprime_et_retourne_minimal_tab_arbre(tab_arbre)
